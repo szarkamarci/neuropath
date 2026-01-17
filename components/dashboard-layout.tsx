@@ -18,10 +18,10 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         <div className="flex min-h-screen flex-col md:flex-row bg-slate-50">
             {/* Mobile Header */}
             <div className="md:hidden flex items-center justify-between p-4 bg-white border-b">
-                <div className="flex items-center gap-2 font-bold text-xl text-slate-800">
+                <Link href="/" className="flex items-center gap-2 font-bold text-xl text-slate-800">
                     <Activity className="h-6 w-6 text-emerald-600" />
                     <span>NeuroPath</span>
-                </div>
+                </Link>
                 <Sheet>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon">
@@ -37,10 +37,10 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             {/* Desktop Sidebar */}
             <aside className="hidden md:flex flex-col w-64 bg-white border-r min-h-screen sticky top-0 h-screen">
                 <div className="p-6 border-b">
-                    <div className="flex items-center gap-2 font-bold text-2xl text-slate-800">
+                    <Link href="/" className="flex items-center gap-2 font-bold text-2xl text-slate-800">
                         <Activity className="h-8 w-8 text-emerald-600" />
                         <span>NeuroPath</span>
-                    </div>
+                    </Link>
                     <div className="mt-2 text-xs font-medium px-2 py-1 bg-slate-100 rounded inline-block text-slate-500">
                         v0.1.0 Beta
                     </div>
