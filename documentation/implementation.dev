@@ -1,0 +1,56 @@
+Act as a Lead Full-Stack Engineer and System Architect specializing in scalable HealthTech applications.
+
+**Objective:**
+Build the foundational architecture for "NeuroPath," a patient recruitment platform for Alzheimer's trials.
+**CRITICAL:** Although this is currently a demo with mock data, the code structure must be "Production-Ready." Do not write "throwaway" code. Build it so we can swap the mock data for a real Supabase/PostgreSQL backend later without rewriting the UI.
+
+**Localization Rule (VERY IMPORTANT):**
+- **UI Text:** All user-facing text (Buttons, Labels, Dialogs, Charts) must be in **HUNGARIAN** (e.g., use "Szűrés indítása" instead of "Start Screening").
+- **Code:** All variable names, comments, and file names must remain in **ENGLISH** (Standard Industry Practice).
+
+**Tech Stack (Strict):**
+- **Framework:** Next.js 14+ (App Router)
+- **Language:** TypeScript (Strict mode). Define interfaces for `Patient`, `Doctor`, `Study`.
+- **Styling:** Tailwind CSS + shadcn/ui components.
+- **State Management:** React Context or Zustand (for managing the user session and patient list state globally).
+- **Icons:** Lucide React.
+
+**Architecture Requirements (The "Real App" Prep):**
+1.  **Service Layer Pattern:** Create a distinct folder `lib/services/`.
+    - Create `patientService.ts` that contains functions like `getPatients()`, `enrollPatient(id)`, `submitScreening(data)`.
+    - Currently, these functions should return *simulated promises* (mock data with a 500ms delay), but the UI components must call these functions, NOT hardcoded variables.
+2.  **Types:** Create a `types/index.ts` file defining the data models.
+3.  **Component Modularity:** Separate "Page Logic" (fetching data) from "UI Components" (displaying data).
+
+**Scope - Implement the Core Workflow:**
+
+### 1. SHARED LAYOUT & AUTH STUB
+- Create a `DashboardLayout` component with a sidebar navigation.
+- App Name: **NeuroPath** (Display this in the top left).
+- Create a `UserContext` that simulates a logged-in user.
+- Feature: A simple "Role Switcher" button in the corner (dev-only) to instantly toggle the current user between "Orvos Mód" (Doctor) and "Pharma Mód" (Sponsor).
+
+### 2. THE DOCTOR WORKFLOW (Investigator)
+- **Dashboard:** A clean table using `shadcn/ui` <Table> showing patients. Columns: Név (Name), Kor (Age), Kockázati Szint (Risk Score), Státusz (Status).
+- **Action:** Clicking "Új szűrés" (Screen New Patient) opens a Modal.
+- **The Screening Form:** A multi-step wizard.
+  - Step 1: "Beteg adatai" (Patient Demographics).
+  - Step 2: "Kognitív Teszt" (Mock input).
+  - Step 3: Result calculation.
+  - **Logic:** If score < X, automatically tag as "MCI Észlelve" (MCI Detected) via the `patientService`.
+
+### 3. THE PHARMA DASHBOARD (Sponsor)
+- **Analytics View:** Use `recharts` to visualize the data from `patientService`.
+- **Chart 1:** "Toborzási Sebesség" (Recruitment Velocity - Line chart).
+- **Chart 2:** "Szűrési Eredmények" (Screening Outcomes - Pie chart: Egészséges vs. MCI vs. Demencia).
+- **ROI Calculator:** A component that takes the "Bevont Betegek" (Enrolled Count) and multiplies it by €15,000, displaying the dynamic "Megtakarított Költség" (Saved Cost).
+
+**Design System:**
+- Use a professional "Clinical" color palette: Slate (neutrals), Emerald (success/safe), and Rose (alert/risk).
+- Font: Inter.
+
+**Deliverables:**
+- Provide the directory structure.
+- Provide the `types/index.ts` definitions.
+- Provide the `patientService.ts` mock implementation.
+- Provide the main page code integrating these services.
