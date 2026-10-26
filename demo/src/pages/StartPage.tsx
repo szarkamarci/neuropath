@@ -74,7 +74,10 @@ function StartHero({ onStart, onExploreGp, onReset }: StartHeroProps) {
               {t.start.reset}
             </button>
           </div>
-          <div className="mt-6 flex flex-wrap items-center gap-6 text-label-md text-on-surface-variant">
+          <p className="mt-5 text-label-md text-muted" data-demo="shortcuts">
+            {t.guide.shortcuts}
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-6 text-label-md text-on-surface-variant">
             {t.start.facts.map((fact) => (
               <div key={fact} className="flex items-center gap-1.5">
                 <Check className="size-3.5 text-secondary" strokeWidth={3} />

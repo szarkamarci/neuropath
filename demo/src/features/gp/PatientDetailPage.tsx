@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Notice } from '../../components/ui/Notice';
 import { patientsById } from '../../data/seed';
 import type { Patient } from '../../data/types';
 import { mbiAnsweredCount } from '../../logic/mbi';
+import { useDemoStore } from '../../store/demoStore';
 import { useMbiAnswers, usePatientRisk } from '../../store/selectors';
 import { t } from '../../strings';
 import { DecisionCard } from './DecisionCard';
@@ -36,7 +37,13 @@ export function PatientDetailPage() {
 function PatientDetail({ patient }: { patient: Patient }) {
   const risk = usePatientRisk(patient);
   const checkStarted = mbiAnsweredCount(useMbiAnswers(patient.id)) > 0;
-  const [referralOpen, setReferralOpen] = useState(false);
+  // The dialog's open state lives in the URL so the guided demo can open it deterministically.
+  const [params, setParams] = useSearchParams();
+  const decided = useDemoStore((s) => s.decisionById[patient.id] !== undefined);
+  const referralOpen = params.get('referral') === '1' && !decided;
+  useEffect(() => {
+    if (decided && params.has('referral')) setParams({}, { replace: true });
+  }, [decided, params, setParams]);
 
   return (
     <>
@@ -48,14 +55,14 @@ function PatientDetail({ patient }: { patient: Patient }) {
           <RecordNotesCard patient={patient} />
           <MbiCheckCard patientId={patient.id} />
           <RecommendationCard band={risk.current.band} checkStarted={checkStarted} />
-          <DecisionCard patient={patient} band={risk.current.band} onRefer={() => setReferralOpen(true)} />
+          <DecisionCard patient={patient} band={risk.current.band} onRefer={() => setParams({ referral: '1' })} />
         </div>
         {/* Sticky so the risk card stays in view while the GP answers the check. */}
         <div className="sticky top-[88px] col-span-5">
           <RiskCard risk={risk} checkStarted={checkStarted} />
         </div>
       </div>
-      <ReferralModal open={referralOpen} onClose={() => setReferralOpen(false)} patient={patient} risk={risk} />
+      <ReferralModal open={referralOpen} onClose={() => setParams({}, { replace: true })} patient={patient} risk={risk} />
     </>
   );
 }

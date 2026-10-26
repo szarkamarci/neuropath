@@ -20,7 +20,7 @@ export function Toast() {
     <div
       role="status"
       key={toast}
-      className="fixed bottom-14 left-1/2 z-[90] flex -translate-x-1/2 animate-pop-in items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-label-lg text-white shadow-xl"
+      className="fixed top-[88px] left-1/2 z-[90] flex -translate-x-1/2 animate-pop-in items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-label-lg text-white shadow-xl"
     >
       <CircleCheck className="size-4 text-secondary-fixed-dim" />
       {toast}

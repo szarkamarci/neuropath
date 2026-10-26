@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { GuideController } from '../../features/guide/GuideController';
+import { GuideOverlay } from '../../features/guide/GuideOverlay';
 import { DisclaimerBar } from './DisclaimerBar';
 import { Toast } from './Toast';
 import { TopBar } from './TopBar';
@@ -21,6 +23,8 @@ export function AppShell() {
       </main>
       <DisclaimerBar />
       <Toast />
+      <GuideController />
+      <GuideOverlay />
     </div>
   );
 }

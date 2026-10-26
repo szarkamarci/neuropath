@@ -2,7 +2,8 @@ import { create } from 'zustand';
 import { patients } from '../data/seed';
 import type { PatientStatus } from '../data/types';
 import { appointmentFor, type Appointment } from '../logic/appointment';
-import type { Assessment } from '../logic/assessment';
+import { EMPTY_DRAFT } from '../logic/assessment';
+import type { Assessment, AssessmentDraft } from '../logic/assessment';
 import type { MbiAnswer, MbiAnswers, MbiItemId } from '../logic/mbi';
 import type { RiskResult } from '../logic/risk';
 import { assessPatient } from '../logic/riskInput';
@@ -43,6 +44,8 @@ export interface DemoData {
   referrals: Referral[];
   /** Specialist assessments, keyed by patient id. */
   assessmentById: Record<string, Assessment>;
+  /** Specialist form drafts, keyed by patient id. */
+  assessmentDraftById: Record<string, AssessmentDraft>;
   /** Patient has chosen to share updates with a caregiver. */
   caregiverShare: boolean;
 }
@@ -70,6 +73,7 @@ export function createInitialData(): DemoData {
     decisionById: {},
     referrals: seedReferrals(),
     assessmentById: {},
+    assessmentDraftById: {},
     caregiverShare: false,
   };
 }
@@ -79,6 +83,7 @@ interface DemoActions {
   completeMbi: (patientId: string, seconds: number) => void;
   reopenMbi: (patientId: string) => void;
   sendReferral: (referral: Omit<Referral, 'id' | 'appointment'>) => void;
+  patchAssessmentDraft: (patientId: string, patch: Partial<AssessmentDraft>) => void;
   saveAssessment: (assessment: Assessment) => void;
   reopenAssessment: (patientId: string) => void;
   setCaregiverShare: (share: boolean) => void;
@@ -126,6 +131,14 @@ export const useDemoStore = create<DemoStore>()((set) => ({
       ],
       decisionById: { ...s.decisionById, [referral.patientId]: { kind: 'refer' } },
       statusById: { ...s.statusById, [referral.patientId]: statusForDecision.refer },
+    })),
+
+  patchAssessmentDraft: (patientId, patch) =>
+    set((s) => ({
+      assessmentDraftById: {
+        ...s.assessmentDraftById,
+        [patientId]: { ...EMPTY_DRAFT, ...s.assessmentDraftById[patientId], ...patch },
+      },
     })),
 
   saveAssessment: (assessment) =>

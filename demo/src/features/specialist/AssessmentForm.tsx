@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { CircleCheck, RotateCcw, Save, Upload } from 'lucide-react';
 import { CognitiveRadar } from '../../components/charts/CognitiveRadar';
 import { Button } from '../../components/ui/Button';
@@ -9,12 +8,15 @@ import { formatDate } from '../../lib/format';
 import {
   aetiologies,
   cognitiveDomains,
+  draftToAssessment,
+  EMPTY_DRAFT,
   followUpOptions,
   needsAetiology,
   overallScore,
   simulatedProfile,
   workingDiagnoses,
   type Aetiology,
+  type AssessmentDraft,
   type CognitiveProfile,
   type FollowUpMonths,
   type WorkingDiagnosis,
@@ -64,27 +66,23 @@ function SavedAssessment({ referral }: { referral: Referral }) {
 function AssessmentForm({ referral }: { referral: Referral }) {
   const saveAssessment = useDemoStore((s) => s.saveAssessment);
   const showToast = useDemoStore((s) => s.showToast);
-  const [profile, setProfile] = useState<CognitiveProfile | null>(null);
-  const [diagnosis, setDiagnosis] = useState<WorkingDiagnosis | ''>('');
-  const [aetiology, setAetiology] = useState<Aetiology | ''>('');
-  const [followUp, setFollowUp] = useState<FollowUpMonths>(6);
-  const [consent, setConsent] = useState(false);
+  const draft = useDemoStore((s) => s.assessmentDraftById[referral.patientId] ?? EMPTY_DRAFT);
+  const patchDraft = useDemoStore((s) => s.patchAssessmentDraft);
+  const update = (patch: Partial<AssessmentDraft>) => patchDraft(referral.patientId, patch);
+  const { profile, diagnosis, aetiology, followUpMonths: followUp, registryConsent: consent } = draft;
+  const setProfile = (value: CognitiveProfile | null) => update({ profile: value });
+  const setDiagnosis = (value: WorkingDiagnosis | '') => update({ diagnosis: value });
+  const setAetiology = (value: Aetiology | '') => update({ aetiology: value });
+  const setFollowUp = (value: FollowUpMonths) => update({ followUpMonths: value });
+  const setConsent = (value: boolean) => update({ registryConsent: value });
 
   const aetiologyNeeded = diagnosis !== '' && needsAetiology(diagnosis);
-  const canSave = profile !== null && diagnosis !== '' && (!aetiologyNeeded || aetiology !== '');
+  const assessment = draftToAssessment(referral.patientId, draft, DEMO_TODAY);
+  const canSave = assessment !== null;
 
   const handleSave = () => {
-    if (!profile || diagnosis === '') return;
-    saveAssessment({
-      patientId: referral.patientId,
-      profile,
-      overall: overallScore(profile),
-      diagnosis,
-      aetiology: aetiologyNeeded && aetiology !== '' ? aetiology : null,
-      followUpMonths: followUp,
-      registryConsent: consent,
-      assessedOn: DEMO_TODAY,
-    });
+    if (!assessment) return;
+    saveAssessment(assessment);
     showToast(a.saved);
   };
 

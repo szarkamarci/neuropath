@@ -53,7 +53,6 @@ export const en = {
     resetDone: 'Demo data restored to the initial seed.',
     rolesTitle: 'Choose a role',
     openRole: 'Open view',
-    guidedComingSoon: 'Guided walkthrough is added in build phase 5. Opening the GP view instead.',
     facts: ['Frontend-only prototype', 'Fully offline', 'Synthetic, deterministic data'],
   },
 
@@ -577,6 +576,34 @@ export const en = {
       series: { retained: 'Cohort still followed (%)', visits: 'Follow-up visits completed (%)' },
       xLabel: (m: number) => `${m} mo`,
     },
+  },
+
+  guide: {
+    stepOf: (n: number, total: number) => `Step ${n} of ${total}`,
+    steps: {
+      panel: 'The GP opens the chronic-care panel. Erzsébet is flagged at the top.',
+      why: 'The GP sees why: HbA1c trend, blood-pressure swings, age and a reported memory concern.',
+      check: 'A 1-minute structured behavioral check captures the change her daughter noticed.',
+      risk: 'The risk card updates live: Moderate becomes High, and the recommendation turns to referral.',
+      decide: 'The clinician decides. This is decision support only. The GP chooses to refer.',
+      referral: 'A structured referral is pre-filled from the record. One click sends it.',
+      notification: 'Erzsébet receives a calm notification on her phone.',
+      message: 'In plain language: a memory check is a friendly next step, not a diagnosis.',
+      next: 'She sees what happens next, her appointment and what to bring, and can share updates with her daughter.',
+      inbox: 'At the memory clinic, the referral arrives pre-filled in the specialist’s inbox.',
+      assess: 'The specialist records the cognitive assessment, a working diagnosis (MCI, suspected AD) and registry consent.',
+      saved: 'Saved. The GP now sees “Specialist assessed – follow-up scheduled”, and Erzsébet’s message updates.',
+      registry: 'In the anonymized registry, pre-qualified MCI candidates tick up by one and the screening estimate updates.',
+    },
+    back: 'Back',
+    next: 'Next',
+    finish: 'Finish',
+    autoplay: 'Auto-play',
+    pause: 'Pause',
+    close: 'End guided demo',
+    show: 'Show guide',
+    hint: '→ next · ← back · A auto-play · R reset · G hide · 1–4 roles',
+    shortcuts: 'Shortcuts: → next · ← back · A auto-play · R reset · G guide · 1–4 jump to a role',
   },
 
   common: {

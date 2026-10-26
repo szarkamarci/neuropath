@@ -52,3 +52,32 @@ export function simulatedProfile(riskScore: number): CognitiveProfile {
   const base = 96 - riskScore * 1.6;
   return Object.fromEntries(cognitiveDomains.map((d) => [d, Math.round(clamp(base + DOMAIN_OFFSET[d], 20, 98))])) as CognitiveProfile;
 }
+
+/** Work-in-progress specialist form. Lives in the shared store so a scripted demo can fill it. */
+export interface AssessmentDraft {
+  profile: CognitiveProfile | null;
+  diagnosis: WorkingDiagnosis | '';
+  aetiology: Aetiology | '';
+  followUpMonths: FollowUpMonths;
+  registryConsent: boolean;
+}
+
+export const EMPTY_DRAFT: AssessmentDraft = { profile: null, diagnosis: '', aetiology: '', followUpMonths: 6, registryConsent: false };
+
+/** Returns the assessment to save, or null while the draft is incomplete. */
+export function draftToAssessment(patientId: string, draft: AssessmentDraft, assessedOn: string): Assessment | null {
+  const { profile, diagnosis, aetiology } = draft;
+  if (!profile || diagnosis === '') return null;
+  const withAetiology = needsAetiology(diagnosis);
+  if (withAetiology && aetiology === '') return null;
+  return {
+    patientId,
+    profile,
+    overall: overallScore(profile),
+    diagnosis,
+    aetiology: withAetiology && aetiology !== '' ? aetiology : null,
+    followUpMonths: draft.followUpMonths,
+    registryConsent: draft.registryConsent,
+    assessedOn,
+  };
+}

@@ -37,3 +37,19 @@ Static, frontend-only, no serverless functions. In the Vercel project settings s
 | `src/pages/` | Start screen, role views, `#/design` component sample page |
 
 Routes (hash-based): `#/`, `#/gp`, `#/gp/patient/:id`, `#/specialist`, `#/specialist/referral/:id`, `#/patient` (`?screen=lock|message|next`), `#/research`, `#/design`.
+
+## Guided demo and keyboard shortcuts
+
+"Start guided demo" (top bar or start screen) resets the data and walks the Erzsébet story in 13 steps across all four roles, highlighting what to click.
+
+| Key | Action |
+| --- | --- |
+| `→` / `Space` | Next step |
+| `←` | Previous step |
+| `A` | Auto-play the whole story (~40 s); press again to pause |
+| `R` | Reset all demo data instantly (restarts the guide at step 1) |
+| `G` | Start the guide, or hide/show the step card |
+| `1` `2` `3` `4` | Jump to GP, Specialist, Patient, Research & Pharma |
+| `Esc` | End the guide (data stays as is) |
+
+Shortcuts are ignored while typing in a form field. Steps are data plus idempotent store actions (`src/features/guide/steps.ts`): every step rebuilds its state by resetting and replaying the earlier steps, so back, jump, auto-play and reset always agree, and the same seed always gives the same numbers.
