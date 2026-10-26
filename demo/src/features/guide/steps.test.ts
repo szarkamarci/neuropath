@@ -37,6 +37,15 @@ describe('guided story', () => {
     }
   });
 
+  it('shows the referral dialog before the referral is sent (act on exit)', () => {
+    const i = STEPS.findIndex((s) => s.id === 'referral');
+    expect(STEPS[i]!.actOnExit).toBe(true);
+    replayBefore(i);
+    expect(snapshot().referrals.some((r) => r.patientId === HERO_ID)).toBe(false);
+    replayBefore(i + 1);
+    expect(snapshot().referrals.some((r) => r.patientId === HERO_ID)).toBe(true);
+  });
+
   it('state is path independent: going back lands on the same state as going forward', () => {
     replayBefore(5);
     const forward = snapshot();

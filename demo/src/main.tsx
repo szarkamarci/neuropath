@@ -7,6 +7,9 @@ import '@fontsource/plus-jakarta-sans/700.css';
 import './styles/theme.css';
 import { App } from './app/App';
 
+// Fetch every weight now, not on first use, so a venue Wi-Fi drop mid-demo can't change the typography.
+for (const weight of [400, 500, 600, 700]) void document.fonts.load(`${weight} 1em "Plus Jakarta Sans"`);
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

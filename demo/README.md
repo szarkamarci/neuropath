@@ -36,7 +36,7 @@ Static, frontend-only, no serverless functions. In the Vercel project settings s
 | `src/store/demoStore.ts` | Shared in-memory state (Zustand) with deterministic reset |
 | `src/pages/` | Start screen, role views, `#/design` component sample page |
 
-Routes (hash-based): `#/`, `#/gp`, `#/gp/patient/:id`, `#/specialist`, `#/specialist/referral/:id`, `#/patient` (`?screen=lock|message|next`), `#/research`, `#/design`.
+Routes (hash-based; `#/design` is the component sample page, reachable by URL only): `#/`, `#/gp`, `#/gp/patient/:id`, `#/specialist`, `#/specialist/referral/:id`, `#/patient` (`?screen=lock|message|next`), `#/research`, `#/design`.
 
 ## Guided demo and keyboard shortcuts
 
@@ -53,3 +53,20 @@ Routes (hash-based): `#/`, `#/gp`, `#/gp/patient/:id`, `#/specialist`, `#/specia
 | `Esc` | End the guide (data stays as is) |
 
 Shortcuts are ignored while typing in a form field. Steps are data plus idempotent store actions (`src/features/guide/steps.ts`): every step rebuilds its state by resetting and replaying the earlier steps, so back, jump, auto-play and reset always agree, and the same seed always gives the same numbers.
+
+## Honesty rules (brief §2) and how they are enforced
+
+- The disclaimer bar is part of the app shell and never hidden. The risk model is labelled "Prototype risk logic (literature-based factors); to be replaced by models validated in the clinical pilot." No accuracy, AUC or sensitivity figures appear anywhere, and nothing is called "AI-diagnosed".
+- Every recommendation is framed as decision support; the clinician-decision step is always present.
+- All patients and aggregates are synthetic and deterministic (fixed-seed PRNG, no `Math.random`).
+- The Research & Pharma page is aggregate-only: cells under 10 show `<10` (`src/logic/suppression.ts`), there are no names, IDs or patient rows, and the anonymization note is pinned to the top of the page.
+- No third-party logos or trademarks; the behavioral-check items are short paraphrased placeholders.
+
+## Quality checks
+
+```bash
+npm run typecheck   # strict TypeScript
+npm test            # 38 unit tests: risk model, suppression, cohort, efficiency, guided-story determinism
+```
+
+Verified in a real browser on the built `dist/`: the full four-role story, the guided demo and 40 s auto-play, no horizontal overflow on any screen at 1440×900 and 1920×1080, no console errors, no external requests, and the whole auto-play story running with the server stopped and the network disabled. A clean `npm ci && npm run build` succeeds (what Vercel runs).

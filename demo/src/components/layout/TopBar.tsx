@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Palette } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Logo } from '../brand/Logo';
 import { Button } from '../ui/Button';
 import { RoleSwitcher } from './RoleSwitcher';
@@ -22,14 +22,6 @@ export function TopBar() {
           <span className="mr-2 inline-block size-2 animate-pulse rounded-full bg-teal" />
           {t.nav.synthetic}
         </div>
-        <Link
-          to="/design"
-          title={t.nav.designSystem}
-          aria-label={t.nav.designSystem}
-          className="flex size-9 items-center justify-center rounded-full bg-surface-container text-on-surface-variant transition-colors hover:text-secondary"
-        >
-          <Palette className="size-4" />
-        </Link>
         <Button size="sm" onClick={startGuidedDemo} iconRight={<ArrowRight className="size-4" />}>
           {t.nav.startGuided}
         </Button>

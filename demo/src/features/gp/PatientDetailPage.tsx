@@ -42,8 +42,10 @@ function PatientDetail({ patient }: { patient: Patient }) {
   const decided = useDemoStore((s) => s.decisionById[patient.id] !== undefined);
   const referralOpen = params.get('referral') === '1' && !decided;
   useEffect(() => {
-    if (decided && params.has('referral')) setParams({}, { replace: true });
-  }, [decided, params, setParams]);
+    // Skip if something else already navigated away (e.g. the guide moving to the next role).
+    const stillHere = window.location.hash.startsWith(`#/gp/patient/${patient.id}`);
+    if (decided && params.has('referral') && stillHere) setParams({}, { replace: true });
+  }, [decided, params, setParams, patient.id]);
 
   return (
     <>

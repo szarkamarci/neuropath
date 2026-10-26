@@ -47,7 +47,7 @@ export function GuideController() {
     if (here.current !== current.route) navigate(current.route, { replace: true });
 
     if (!guide.autoplay) {
-      current.acts.forEach((act) => act());
+      if (!current.actOnExit) current.acts.forEach((act) => act());
       return;
     }
     later(() => {

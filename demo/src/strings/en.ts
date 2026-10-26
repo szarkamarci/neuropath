@@ -455,6 +455,10 @@ export const en = {
       behaviorNotDone: 'Not completed at referral.',
       behaviorScore: (score: number, max: number) => `Score ${score} / ${max}`,
       notFound: 'Referral not found.',
+      emptyTitle: 'No referral for this patient yet',
+      emptyBody: 'The referral appears here once the GP sends it. Open the GP view to refer Erzsébet K.',
+      emptyAction: 'Open GP view',
+      emptyBack: 'Back to inbox',
     },
     assess: {
       cognitiveEyebrow: 'Step 1',

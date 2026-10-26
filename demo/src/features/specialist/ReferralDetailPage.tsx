@@ -1,5 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { ArrowLeft, Inbox } from 'lucide-react';
+import { Button } from '../../components/ui/Button';
 import { Badge } from '../../components/ui/Badge';
 import { Card } from '../../components/ui/Card';
 import { Notice } from '../../components/ui/Notice';
@@ -17,6 +18,7 @@ export function ReferralDetailPage() {
   const referral = useDemoStore((s) => s.referrals.find((r) => r.patientId === patientId));
   const assessed = useDemoStore((s) => Boolean(s.assessmentById[patientId]));
   const d = t.specialist.detail;
+  const navigate = useNavigate();
 
   return (
     <div className="mx-auto max-w-[1440px] px-6 py-5 lg:px-12">
@@ -24,8 +26,22 @@ export function ReferralDetailPage() {
         <ArrowLeft className="size-4" />
         {d.back}
       </Link>
-      {!patient || !referral ? (
+      {!patient ? (
         <Notice tone="attention">{d.notFound}</Notice>
+      ) : !referral ? (
+        <Card className="flex flex-col items-center px-8 py-16 text-center" data-demo="referral-empty">
+          <div className="mb-4 flex size-14 items-center justify-center rounded-full bg-mint text-secondary">
+            <Inbox className="size-6" />
+          </div>
+          <h1 className="text-title-md text-navy">{d.emptyTitle}</h1>
+          <p className="mt-1 mb-6 max-w-md text-body-sm text-on-surface-variant">{d.emptyBody}</p>
+          <div className="flex gap-3">
+            <Button variant="tertiary" onClick={() => navigate('/specialist')}>
+              {d.emptyBack}
+            </Button>
+            <Button onClick={() => navigate(`/gp/patient/${patient.id}`)}>{d.emptyAction}</Button>
+          </div>
+        </Card>
       ) : (
         <>
           <Card className="flex items-center justify-between gap-8 px-6 py-5" data-demo="referral-header">

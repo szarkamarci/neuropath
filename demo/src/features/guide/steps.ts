@@ -36,6 +36,11 @@ export interface GuideStep {
   ms: number;
   /** What a click on the highlighted element does. All run together, or staggered in auto-play. */
   acts: Array<() => void>;
+  /**
+   * Manual stepping applies `acts` when leaving the step instead of on entry, so the audience
+   * sees the "before" (e.g. the referral dialog). Later steps always include them.
+   */
+  actOnExit?: boolean;
 }
 
 const store = () => useDemoStore.getState();
@@ -89,7 +94,7 @@ export const STEPS: readonly GuideStep[] = [
   { id: 'check', role: 'gp', route: GP_DETAIL, targets: ['mbi-card'], ms: 3400, acts: answerActs },
   { id: 'risk', role: 'gp', route: GP_DETAIL, targets: ['risk-card'], ms: 3000, acts: [completeCheck] },
   { id: 'decide', role: 'gp', route: GP_DETAIL, targets: ['decision-refer'], ms: 2400, acts: [] },
-  { id: 'referral', role: 'gp', route: `${GP_DETAIL}?referral=1`, targets: ['decision-recorded', 'send-referral'], ms: 3000, acts: [sendReferral] },
+  { id: 'referral', role: 'gp', route: `${GP_DETAIL}?referral=1`, targets: ['decision-recorded', 'send-referral'], ms: 3000, acts: [sendReferral], actOnExit: true },
   { id: 'notification', role: 'patient', route: '/patient', targets: ['push-notification'], ms: 2400, acts: [] },
   { id: 'message', role: 'patient', route: '/patient?screen=message', targets: ['phone'], ms: 2600, acts: [] },
   { id: 'next', role: 'patient', route: '/patient?screen=next', targets: ['patient-appointment'], ms: 3000, acts: [() => store().setCaregiverShare(true)] },

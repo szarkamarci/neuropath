@@ -23,7 +23,7 @@ export function StartPage() {
     <div className="mx-auto max-w-[1440px] px-6 py-6 lg:px-12 2xl:py-12">
       <StartHero onStart={startGuidedDemo} onExploreGp={() => navigate('/gp')} onReset={handleReset} />
 
-      <section className="mt-6 2xl:mt-10">
+      <section className="mt-5 2xl:mt-10">
         <h2 className="mb-4 text-label-md tracking-wider text-secondary uppercase">{t.start.rolesTitle}</h2>
         <div className="grid grid-cols-2 gap-gutter lg:grid-cols-4">
           {roles.map((role) => (
@@ -44,7 +44,7 @@ interface StartHeroProps {
 /** Asymmetric 2-column hero, modelled on code.html's hero template. */
 function StartHero({ onStart, onExploreGp, onReset }: StartHeroProps) {
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-8 shadow-sm lg:px-12 lg:py-10 2xl:p-14">
+    <section className="relative overflow-hidden rounded-2xl border border-outline-variant/30 bg-surface-container-lowest p-8 shadow-sm lg:px-12 lg:py-8 2xl:p-14">
       <div className="pointer-events-none absolute top-0 right-0 h-full w-1/2 bg-gradient-to-l from-mint/60 to-transparent" />
       <div className="relative z-10 grid grid-cols-12 items-center gap-10">
         <div className="col-span-12 lg:col-span-7">
