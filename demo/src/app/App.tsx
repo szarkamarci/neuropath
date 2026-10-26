@@ -3,12 +3,11 @@ import { AppShell } from '../components/layout/AppShell';
 import { GpPanelPage } from '../features/gp/GpPanelPage';
 import { PatientDetailPage } from '../features/gp/PatientDetailPage';
 import { PatientPage } from '../features/patient/PatientPage';
+import { ResearchPage } from '../features/research/ResearchPage';
 import { ReferralDetailPage } from '../features/specialist/ReferralDetailPage';
 import { SpecialistInboxPage } from '../features/specialist/SpecialistInboxPage';
 import { DesignSystemPage } from '../pages/DesignSystemPage';
-import { RolePlaceholderPage } from '../pages/RolePlaceholderPage';
 import { StartPage } from '../pages/StartPage';
-import { roles } from './roles';
 
 export function App() {
   return (
@@ -21,11 +20,7 @@ export function App() {
           <Route path="/specialist" element={<SpecialistInboxPage />} />
           <Route path="/specialist/referral/:patientId" element={<ReferralDetailPage />} />
           <Route path="/patient" element={<PatientPage />} />
-          {roles
-            .filter((role) => role.id === 'research')
-            .map((role) => (
-              <Route key={role.id} path={role.path} element={<RolePlaceholderPage role={role} />} />
-            ))}
+          <Route path="/research" element={<ResearchPage />} />
           <Route path="/design" element={<DesignSystemPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
