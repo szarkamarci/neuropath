@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroPath — Brand Identity &amp; UI Kit</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#60d8d9",
+            "background": "#f7f9fc",
+            "tertiary": "#00040c",
+            "on-primary": "#ffffff",
+            "surface": "#f7f9fc",
+            "surface-variant": "#e0e3e6",
+            "on-tertiary-fixed-variant": "#034882",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#002020",
+            "surface-bright": "#f7f9fc",
+            "primary-container": "#0b1d3a",
+            "on-surface-variant": "#44474d",
+            "tertiary-fixed": "#d3e3ff",
+            "inverse-surface": "#2d3133",
+            "inverse-on-surface": "#eff1f4",
+            "on-tertiary-container": "#5788c5",
+            "error": "#ba1a1a",
+            "secondary-fixed": "#7ff5f5",
+            "outline": "#75777e",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#eceef1",
+            "on-secondary": "#ffffff",
+            "on-surface": "#191c1e",
+            "on-primary-fixed-variant": "#374766",
+            "surface-container-low": "#f2f4f7",
+            "on-secondary-fixed-variant": "#004f50",
+            "on-error-container": "#93000a",
+            "surface-tint": "#4f5e7f",
+            "on-secondary-container": "#007071",
+            "primary": "#00030f",
+            "surface-container-highest": "#e0e3e6",
+            "on-tertiary-fixed": "#001c39",
+            "on-background": "#191c1e",
+            "secondary-container": "#7ff5f5",
+            "on-primary-container": "#7585a8",
+            "inverse-primary": "#b6c7ec",
+            "error-container": "#ffdad6",
+            "secondary": "#006a6a",
+            "tertiary-fixed-dim": "#a3c9ff",
+            "on-primary-fixed": "#091b38",
+            "tertiary-container": "#001e3c",
+            "primary-fixed-dim": "#b6c7ec",
+            "surface-dim": "#d8dadd",
+            "outline-variant": "#c5c6ce",
+            "primary-fixed": "#d7e2ff",
+            "surface-container-high": "#e6e8eb",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "3rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "space-2xl": "4rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1.25rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "metric-number": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-sm": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "metric-number": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "title-md": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "display-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c5c6ce;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- ================= TOP NAVIGATION BAR (Shared Component Anchor) ================= -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 lg:px-12 h-[72px] bg-surface-container-lowest/90 dark:bg-primary-container/90 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline/20 shadow-sm transition-all duration-200">
+<div class="flex items-center gap-8">
+<!-- Brand Logo / Identity -->
+<a class="flex items-center gap-2.5 group" href="#">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary group-hover:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined text-secondary" style="font-size: 24px;">psychology</span>
+</div>
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-on-primary tracking-tight">NeuroPath</span>
+</a>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-secondary dark:text-secondary-fixed font-semibold text-label-lg font-label-lg transition-colors duration-150" href="#platform">Platform</a>
+<a class="text-on-surface-variant dark:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150 text-label-lg font-label-lg" href="#solutions">Solutions</a>
+<a class="text-on-surface-variant dark:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150 text-label-lg font-label-lg" href="#resources">Resources</a>
+<a class="text-on-surface-variant dark:text-on-surface hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150 text-label-lg font-label-lg" href="#about">About</a>
+</nav>
+</div>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center text-label-md font-label-md text-on-surface-variant px-3 py-1 bg-surface-container rounded-full border border-outline-variant/40">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary mr-2 animate-pulse"></span>
+        v2.4 Design System
+      </div>
+<button class="bg-secondary hover:bg-on-secondary-container text-on-primary px-5 py-2 rounded-full text-label-lg font-label-lg transition-all duration-200 active:scale-95 shadow-sm flex items-center gap-1.5">
+<span>Request a Demo</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</header>
+<div class="pt-[72px]">
+<!-- ================= SUB-NAV / DESIGN SYSTEM JUMP BAR ================= -->
+<section class="bg-surface-container-low border-b border-outline-variant/30 px-6 lg:px-12 py-3.5 sticky top-[72px] z-40 backdrop-blur-sm bg-surface-container-low/95">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-label-md font-label-md text-on-surface-variant">
+<span class="font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary" style="font-size: 18px;">palette</span>
+            NeuroPath Design Guidelines
+          </span>
+<span class="text-outline-variant">•</span>
+<span>Light Mode Official Specification</span>
+</div>
+<!-- Jump Navigation Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 custom-scrollbar text-label-md font-label-md">
+<a class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:text-secondary border border-outline-variant/30 transition-colors" href="#logos">1. Logos</a>
+<a class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:text-secondary border border-outline-variant/30 transition-colors" href="#colors">2. Color Palette</a>
+<a class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:text-secondary border border-outline-variant/30 transition-colors" href="#typography">3. Typography</a>
+<a class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:text-secondary border border-outline-variant/30 transition-colors" href="#attributes">4. Attributes</a>
+<a class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface hover:text-secondary border border-outline-variant/30 transition-colors" href="#action">5. Brand in Action</a>
+<a class="px-3 py-1 rounded-full bg-secondary text-on-primary border border-secondary transition-colors" href="#hero-specimen">Hero Template</a>
+</div>
+</div>
+</section>
+<!-- ================= SYSTEM INTRO HERO ================= -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 pt-12 pb-10">
+<div class="bg-surface-container-lowest rounded-2xl p-8 lg:p-12 border border-outline-variant/30 shadow-sm relative overflow-hidden">
+<!-- Ambient radial glow -->
+<div class="absolute -right-20 -top-20 w-96 h-96 bg-secondary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-3xl relative z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low text-secondary font-label-md text-label-md mb-4 border border-secondary/20">
+<span class="material-symbols-outlined text-sm">verified</span>
+            Authoritative Clinical Identity Standard
+          </div>
+<h1 class="text-display-hero-mobile md:text-headline-lg font-headline-lg text-primary-container tracking-tight mb-4">
+            NeuroPath Brand Identity &amp; Interface Design System
+          </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-6 leading-relaxed">
+            Bridging clinical neurology rigor with compassionate digital care. This master asset repository defines our visual language, token architecture, clinical triage components, and responsive production patterns.
+          </p>
+<div class="flex flex-wrap items-center gap-3">
+<button class="px-5 py-2.5 rounded-full bg-primary-container text-on-primary font-label-lg text-label-lg hover:bg-tertiary-container transition-all flex items-center gap-2 shadow-sm" onclick="navigator.clipboard.writeText('npm install @neuropath/design-tokens'); this.innerText='Tokens Copied!';">
+<span class="material-symbols-outlined text-base">content_copy</span>
+<span>Copy Design Tokens</span>
+</button>
+<a class="px-5 py-2.5 rounded-full border border-secondary text-secondary hover:bg-surface-container-low font-label-lg text-label-lg transition-colors flex items-center gap-2" href="#action">
+<span class="material-symbols-outlined text-base">widgets</span>
+<span>Inspect UI Modules</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 1. LOGOS & BRAND MARKS ================= -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-10" id="logos">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-outline-variant/30">
+<div>
+<span class="text-label-md font-label-md text-secondary uppercase tracking-wider">Asset Library 01</span>
+<h2 class="text-headline-md font-headline-md text-primary-container">Logo Architecture &amp; Wordmark Variations</h2>
+</div>
+<span class="text-label-sm font-label-md text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">SVG / Vector Scalable</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- 1. Primary Logo Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="text-label-md font-label-md text-on-surface-variant">1. PRIMARY LOGO</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-md bg-surface-container text-on-surface-variant">Horizontal</span>
+</div>
+<!-- Graphic Primary Logo -->
+<div class="py-6 flex items-center justify-start gap-4">
+<div class="relative w-14 h-14 flex items-center justify-center">
+<!-- Neural icon reproduction -->
+<svg class="w-full h-full stroke-secondary fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" viewbox="0 0 100 100">
+<path d="M50 82 C50 82 45 68 35 65 C22 62 18 45 28 32 C22 24 30 14 42 18 C48 10 65 10 70 20 C82 18 88 32 80 44 C88 56 75 70 65 66 C55 64 50 82 50 82 Z" fill="#E6F2F2" stroke="#1BA7A8" stroke-width="5"></path>
+<circle cx="35" cy="35" fill="#4C7DBA" r="4.5" stroke="#0B1D3A" stroke-width="2"></circle>
+<circle cx="65" cy="35" fill="#4C7DBA" r="4.5" stroke="#0B1D3A" stroke-width="2"></circle>
+<circle cx="50" cy="48" fill="#1BA7A8" r="4" stroke="#0B1D3A" stroke-width="2"></circle>
+<circle cx="58" cy="22" fill="#1BA7A8" r="3.5" stroke="#0B1D3A" stroke-width="2"></circle>
+<line stroke="#0B1D3A" stroke-width="2.5" x1="35" x2="50" y1="35" y2="48"></line>
+<line stroke="#0B1D3A" stroke-width="2.5" x1="65" x2="50" y1="35" y2="48"></line>
+<line stroke="#0B1D3A" stroke-width="2.5" x1="58" x2="50" y1="22" y2="48"></line>
+<!-- Pathway stem -->
+<path d="M50 82 Q55 92 45 96" fill="none" stroke="#1BA7A8" stroke-width="4"></path>
+</svg>
+</div>
+<div>
+<div class="text-headline-md font-headline-md font-bold text-primary-container leading-none">NeuroPath</div>
+<div class="text-label-md font-label-md text-secondary mt-1 tracking-tight">Early insight. Better care. Together.</div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center justify-between text-label-md font-label-md text-on-surface-variant">
+<span>Primary brand lockup for web header &amp; collateral</span>
+<button class="hover:text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> SVG
+            </button>
+</div>
+</div>
+<!-- 2. Secondary Logo Card (Stacked) -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="text-label-md font-label-md text-on-surface-variant">2. SECONDARY LOGO</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-md bg-surface-container text-on-surface-variant">Stacked</span>
+</div>
+<!-- Centered Stacked Logo -->
+<div class="py-4 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 mb-2">
+<svg class="w-full h-full stroke-secondary fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" viewbox="0 0 100 100">
+<path d="M50 82 C50 82 45 68 35 65 C22 62 18 45 28 32 C22 24 30 14 42 18 C48 10 65 10 70 20 C82 18 88 32 80 44 C88 56 75 70 65 66 C55 64 50 82 50 82 Z" fill="#E6F2F2" stroke="#1BA7A8" stroke-width="5"></path>
+<circle cx="35" cy="35" fill="#4C7DBA" r="4.5" stroke="#0B1D3A" stroke-width="2"></circle>
+<circle cx="65" cy="35" fill="#4C7DBA" r="4.5" stroke="#0B1D3A" stroke-width="2"></circle>
+<circle cx="50" cy="48" fill="#1BA7A8" r="4" stroke="#0B1D3A" stroke-width="2"></circle>
+<line stroke="#0B1D3A" stroke-width="2.5" x1="35" x2="50" y1="35" y2="48"></line>
+<line stroke="#0B1D3A" stroke-width="2.5" x1="65" x2="50" y1="35" y2="48"></line>
+<path d="M50 82 Q55 92 45 96" fill="none" stroke="#1BA7A8" stroke-width="4"></path>
+</svg>
+</div>
+<div class="text-headline-md font-headline-md font-bold text-primary-container leading-tight">NeuroPath</div>
+<div class="text-label-md font-label-md text-secondary mt-0.5">Early insight. Better care. Together.</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center justify-between text-label-md font-label-md text-on-surface-variant">
+<span>Optimized for app splash, print &amp; badges</span>
+<button class="hover:text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> SVG
+            </button>
+</div>
+</div>
+<!-- 3. Wordmark Only -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-8">
+<span class="text-label-md font-label-md text-on-surface-variant">3. WORDMARK</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-md bg-surface-container text-on-surface-variant">Text Only</span>
+</div>
+<div class="py-10 flex flex-col items-center justify-center">
+<div class="text-display-hero-mobile md:text-headline-lg font-headline-lg font-bold text-primary-container tracking-tight">
+                NeuroPath
+              </div>
+<p class="text-label-md font-label-md text-on-surface-variant mt-3 text-center">Kerning: -0.025em | Geometric Humanist Weight</p>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex items-center justify-between text-label-md font-label-md text-on-surface-variant">
+<span>Clinical documentation &amp; editorial headers</span>
+<button class="hover:text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> SVG
+            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 2. COLOR PALETTE SYSTEM ================= -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-10" id="colors">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-outline-variant/30">
+<div>
+<span class="text-label-md font-label-md text-secondary uppercase tracking-wider">Asset Library 02</span>
+<h2 class="text-headline-md font-headline-md text-primary-container">4. Color Palette &amp; Contrast Metrics</h2>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">WCAG AAA / AA Tested</span>
+</div>
+<!-- Grid of 6 Brand Swatches directly from source image -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Deep Navy #0B1D3A -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="h-32 bg-[#0B1D3A] flex items-end p-3">
+<span class="px-2 py-0.5 rounded bg-black/40 text-white text-[10px] font-label-md font-semibold">Primary Deep</span>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<div class="font-bold text-primary-container text-body-md font-body-md">#0B1D3A</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Deep Navy</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 text-label-md font-label-md text-on-surface-variant flex justify-between items-center">
+<span>Text / Core</span>
+<button class="hover:text-secondary" onclick="navigator.clipboard.writeText('#0B1D3A')" title="Copy HEX">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Cyan/Teal #1BA7A8 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="h-32 bg-[#1BA7A8] flex items-end p-3">
+<span class="px-2 py-0.5 rounded bg-black/30 text-white text-[10px] font-label-md font-semibold">Action Cyan</span>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<div class="font-bold text-primary-container text-body-md font-body-md">#1BA7A8</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Teal Accent</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 text-label-md font-label-md text-on-surface-variant flex justify-between items-center">
+<span>Primary CTA</span>
+<button class="hover:text-secondary" onclick="navigator.clipboard.writeText('#1BA7A8')" title="Copy HEX">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Slate Blue #4C7DBA -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="h-32 bg-[#4C7DBA] flex items-end p-3">
+<span class="px-2 py-0.5 rounded bg-black/30 text-white text-[10px] font-label-md font-semibold">Secondary</span>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<div class="font-bold text-primary-container text-body-md font-body-md">#4C7DBA</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Slate Blue</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 text-label-md font-label-md text-on-surface-variant flex justify-between items-center">
+<span>Pathways &amp; Data</span>
+<button class="hover:text-secondary" onclick="navigator.clipboard.writeText('#4C7DBA')" title="Copy HEX">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Soft Sky Mint #E6F2F2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="h-32 bg-[#E6F2F2] flex items-end p-3 border-b border-outline-variant/20">
+<span class="px-2 py-0.5 rounded bg-black/10 text-primary-container text-[10px] font-label-md font-semibold">Tint / Wash</span>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<div class="font-bold text-primary-container text-body-md font-body-md">#E6F2F2</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Soft Sky Mint</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 text-label-md font-label-md text-on-surface-variant flex justify-between items-center">
+<span>Card / Pill Tint</span>
+<button class="hover:text-secondary" onclick="navigator.clipboard.writeText('#E6F2F2')" title="Copy HEX">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Neutral Ice Gray #F1F3F6 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="h-32 bg-[#F1F3F6] flex items-end p-3 border-b border-outline-variant/20">
+<span class="px-2 py-0.5 rounded bg-black/10 text-primary-container text-[10px] font-label-md font-semibold">Surface Base</span>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<div class="font-bold text-primary-container text-body-md font-body-md">#F1F3F6</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Ice Neutral</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 text-label-md font-label-md text-on-surface-variant flex justify-between items-center">
+<span>Background Canvas</span>
+<button class="hover:text-secondary" onclick="navigator.clipboard.writeText('#F1F3F6')" title="Copy HEX">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Warm Cream #FAF7F2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm flex flex-col">
+<div class="h-32 bg-[#FAF7F2] flex items-end p-3 border-b border-outline-variant/20">
+<span class="px-2 py-0.5 rounded bg-black/10 text-primary-container text-[10px] font-label-md font-semibold">Paper Foundation</span>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<div class="font-bold text-primary-container text-body-md font-body-md">#FAF7F2</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Warm Cream</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 text-label-md font-label-md text-on-surface-variant flex justify-between items-center">
+<span>Humanist Reassurance</span>
+<button class="hover:text-secondary" onclick="navigator.clipboard.writeText('#FAF7F2')" title="Copy HEX">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 3. TYPOGRAPHY SPECIMEN ================= -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-10" id="typography">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-outline-variant/30">
+<div>
+<span class="text-label-md font-label-md text-secondary uppercase tracking-wider">Asset Library 03</span>
+<h2 class="text-headline-md font-headline-md text-primary-container">5. Typography Specimen &amp; Pairings</h2>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Plus Jakarta Sans Humanist Hierarchy</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Heading Style Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="flex items-baseline gap-4 mb-4">
+<span class="text-display-hero font-display-hero text-primary-container">Aa</span>
+<div>
+<div class="text-label-md font-label-md text-secondary uppercase font-semibold">Heading Style</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Display, Headline-LG, Headline-MD</div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/20">
+<h3 class="text-headline-md font-headline-md text-primary-container mb-2">
+              Empowering earlier insights for better outcomes.
+            </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Clean, modern, and confident. Used for headlines, titles, and clinical emphasis. Crafted with -0.02em letter-spacing for tight geometric cohesion.
+            </p>
+</div>
+<div class="mt-6 flex flex-wrap gap-2 text-[11px] font-mono text-on-surface-variant">
+<span class="px-2 py-1 rounded bg-surface-container">weight: 700 / 600</span>
+<span class="px-2 py-1 rounded bg-surface-container">lineHeight: 1.25</span>
+<span class="px-2 py-1 rounded bg-surface-container">tracking: -0.025em</span>
+</div>
+</div>
+<!-- Body Style Card -->
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="flex items-baseline gap-4 mb-4">
+<span class="text-display-hero font-display-hero text-on-surface-variant">Aa</span>
+<div>
+<div class="text-label-md font-label-md text-secondary uppercase font-semibold">Body Style</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Body-LG, Body-MD, Body-SM</div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/20">
+<p class="text-body-md font-body-md text-on-surface mb-3 leading-relaxed">
+              NeuroPath is a digital health platform that enables early cognitive screening, intelligent triage, and seamless care coordination. Designed for people, built for clarity.
+            </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Warm, readable, and highly legible. Used for body text, descriptions, triage clinical explanations, and responsive mobile interfaces.
+            </p>
+</div>
+<div class="mt-6 flex flex-wrap gap-2 text-[11px] font-mono text-on-surface-variant">
+<span class="px-2 py-1 rounded bg-surface-container">weight: 400 / 500</span>
+<span class="px-2 py-1 rounded bg-surface-container">lineHeight: 1.5</span>
+<span class="px-2 py-1 rounded bg-surface-container">tracking: 0em</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 4. BRAND ATTRIBUTES PILLARS ================= -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-10" id="attributes">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-outline-variant/30">
+<div>
+<span class="text-label-md font-label-md text-secondary uppercase tracking-wider">Asset Library 04</span>
+<h2 class="text-headline-md font-headline-md text-primary-container">6. Brand Attributes &amp; Feature Pillars</h2>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">5 Core Principles</span>
+</div>
+<!-- 5 Brand Pillars Grid directly from image -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+<!-- 1. Trustworthy -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm text-center flex flex-col items-center justify-between hover:border-secondary/40 transition-colors">
+<div class="w-14 h-14 rounded-full bg-surface-container-low flex items-center justify-center text-secondary mb-4">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+</div>
+<div>
+<h4 class="text-title-md font-title-md text-primary-container font-semibold mb-1">Trustworthy</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Reliable and evidence-informed neuro diagnostic pathways.</p>
+</div>
+<div class="mt-4 w-8 h-0.5 bg-secondary/30 rounded-full"></div>
+</div>
+<!-- 2. Human-centered -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm text-center flex flex-col items-center justify-between hover:border-secondary/40 transition-colors">
+<div class="w-14 h-14 rounded-full bg-surface-container-low flex items-center justify-center text-secondary mb-4">
+<span class="material-symbols-outlined text-2xl">group</span>
+</div>
+<div>
+<h4 class="text-title-md font-title-md text-primary-container font-semibold mb-1">Human-centered</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Empathetic, inclusive, and accessible to caregivers.</p>
+</div>
+<div class="mt-4 w-8 h-0.5 bg-secondary/30 rounded-full"></div>
+</div>
+<!-- 3. Clear -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm text-center flex flex-col items-center justify-between hover:border-secondary/40 transition-colors">
+<div class="w-14 h-14 rounded-full bg-surface-container-low flex items-center justify-center text-secondary mb-4">
+<span class="material-symbols-outlined text-2xl">check_circle</span>
+</div>
+<div>
+<h4 class="text-title-md font-title-md text-primary-container font-semibold mb-1">Clear</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Simple to understand and navigate during critical care.</p>
+</div>
+<div class="mt-4 w-8 h-0.5 bg-secondary/30 rounded-full"></div>
+</div>
+<!-- 4. Clinical -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm text-center flex flex-col items-center justify-between hover:border-secondary/40 transition-colors">
+<div class="w-14 h-14 rounded-full bg-surface-container-low flex items-center justify-center text-secondary mb-4">
+<span class="material-symbols-outlined text-2xl">medical_services</span>
+</div>
+<div>
+<h4 class="text-title-md font-title-md text-primary-container font-semibold mb-1">Clinical</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Rooted deeply in healthcare standards and validation.</p>
+</div>
+<div class="mt-4 w-8 h-0.5 bg-secondary/30 rounded-full"></div>
+</div>
+<!-- 5. Innovative -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm text-center flex flex-col items-center justify-between hover:border-secondary/40 transition-colors">
+<div class="w-14 h-14 rounded-full bg-surface-container-low flex items-center justify-center text-secondary mb-4">
+<span class="material-symbols-outlined text-2xl">lightbulb</span>
+</div>
+<div>
+<h4 class="text-title-md font-title-md text-primary-container font-semibold mb-1">Innovative</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Forward-thinking and impactful digital biomarker analytics.</p>
+</div>
+<div class="mt-4 w-8 h-0.5 bg-secondary/30 rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- ================= 5. BRAND IN ACTION: DASHBOARD & PHYSICAL SPECIMEN ================= -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-10" id="action">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-outline-variant/30">
+<div>
+<span class="text-label-md font-label-md text-secondary uppercase tracking-wider">Asset Library 05</span>
+<h2 class="text-headline-md font-headline-md text-primary-container">7. Brand in Action — UI System &amp; Collateral</h2>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Tablet App &amp; Stationery Preview</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Tablet/Screen Simulation with Triage Overview (8 Columns) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-2xl border-4 border-[#0B1D3A]/20 shadow-xl overflow-hidden p-6 md:p-8">
+<!-- Tablet App Top Bar -->
+<div class="flex items-center justify-between pb-6 mb-6 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-2xl">psychology</span>
+<span class="text-title-md font-title-md font-bold text-primary-container">NeuroPath</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined text-lg">notifications</span>
+</button>
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary font-bold text-xs flex items-center justify-center">
+                AS
+              </div>
+</div>
+</div>
+<!-- Welcome greeting -->
+<div class="mb-6">
+<h3 class="text-headline-md font-headline-md text-primary-container font-bold">Welcome back, Amanda</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Here's your clinical cognitive triage overview for today.</p>
+</div>
+<!-- "Today's Triage Overview" Box from image -->
+<div class="bg-surface-container-low rounded-xl p-5 border border-outline-variant/30">
+<div class="flex items-center justify-between mb-4">
+<span class="text-title-md font-title-md font-bold text-primary-container">Today's Triage Overview</span>
+<a class="text-label-md font-label-md text-secondary hover:underline font-semibold flex items-center gap-0.5" href="#">
+<span>View all</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+<!-- 4 Metric Cards directly from source mockup -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<!-- Metric 1: 12 Screenings Completed -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-[#E6F2F2] flex items-center justify-center text-secondary mb-3">
+<span class="material-symbols-outlined text-lg">assignment_turned_in</span>
+</div>
+<div>
+<div class="text-metric-number font-metric-number text-primary-container">12</div>
+<div class="text-body-sm font-body-sm font-medium text-on-surface">Screenings</div>
+<div class="text-[11px] text-on-surface-variant">Completed</div>
+</div>
+</div>
+<!-- Metric 2: 3 At Risk -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-[#FAF7F2] flex items-center justify-center text-[#ba1a1a] mb-3">
+<span class="material-symbols-outlined text-lg">person_alert</span>
+</div>
+<div>
+<div class="text-metric-number font-metric-number text-[#ba1a1a]">3</div>
+<div class="text-body-sm font-body-sm font-medium text-on-surface">At Risk</div>
+<div class="text-[11px] text-[#ba1a1a] font-medium">Needs Review</div>
+</div>
+</div>
+<!-- Metric 3: 2 Referrals -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-[#E6F2F2] flex items-center justify-center text-[#4C7DBA] mb-3">
+<span class="material-symbols-outlined text-lg">folder_shared</span>
+</div>
+<div>
+<div class="text-metric-number font-metric-number text-primary-container">2</div>
+<div class="text-body-sm font-body-sm font-medium text-on-surface">Referrals</div>
+<div class="text-[11px] text-on-surface-variant">In Progress</div>
+</div>
+</div>
+<!-- Metric 4: 5 Follow-ups Due -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-[#E6F2F2] flex items-center justify-center text-secondary mb-3">
+<span class="material-symbols-outlined text-lg">event_available</span>
+</div>
+<div>
+<div class="text-metric-number font-metric-number text-primary-container">5</div>
+<div class="text-body-sm font-body-sm font-medium text-on-surface">Follow-ups</div>
+<div class="text-[11px] text-on-surface-variant">Due this week</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-end gap-3">
+<button class="text-label-md font-label-md text-on-surface-variant hover:text-secondary flex items-center gap-1" onclick="navigator.clipboard.writeText('&lt;div class=\'triage-overview-grid\'&gt;...&lt;/div&gt;'); alert('Triage Component HTML Copied!');">
+<span class="material-symbols-outlined text-base">code</span>
+<span>Copy Component HTML</span>
+</button>
+</div>
+</div>
+<!-- Business Card Collateral Simulation (4 Columns) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-[#FAF7F2] p-6 rounded-2xl border border-outline-variant/30 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="text-label-md font-label-md text-secondary uppercase font-semibold">Business Card Specimen</span>
+<span class="text-[11px] bg-white px-2 py-0.5 rounded border border-outline-variant/20">3.5" x 2.0"</span>
+</div>
+<!-- Double sided mockup representation -->
+<div class="flex flex-col gap-4">
+<!-- Dark Back Side -->
+<div class="bg-[#0B1D3A] text-white p-6 rounded-xl shadow-md relative overflow-hidden">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary-fixed text-xl">psychology</span>
+<span class="font-bold text-lg tracking-tight">NeuroPath</span>
+</div>
+<div class="text-[11px] text-secondary-fixed/90 font-medium">Early insight. Better care. Together.</div>
+<!-- Subtle pattern watermark -->
+<div class="absolute -right-4 -bottom-6 w-24 h-24 rounded-full border border-white/10 pointer-events-none"></div>
+</div>
+<!-- Clean White Front Side -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 shadow-sm relative">
+<div class="mb-4">
+<div class="font-bold text-primary-container text-body-lg font-body-lg">Jane Smith, MD</div>
+<div class="text-body-sm font-body-sm text-secondary font-medium">Co-Founder &amp; Chief Medical Officer</div>
+</div>
+<div class="space-y-1.5 text-body-sm font-body-sm text-on-surface-variant text-[13px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-secondary">mail</span>
+<span>jane.smith@neuropath.health</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-secondary">call</span>
+<span>+1 415 555 0198</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-secondary">language</span>
+<span>neuropath.health</span>
+</div>
+</div>
+<!-- Subtle watermark brand icon -->
+<div class="absolute right-4 bottom-4 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-5xl text-secondary">psychology</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 6. REUSABLE HERO SECTION TEMPLATE ================= -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-10" id="hero-specimen">
+<div class="flex items-center justify-between mb-8 pb-3 border-b border-outline-variant/30">
+<div>
+<span class="text-label-md font-label-md text-secondary uppercase tracking-wider">Asset Library 06</span>
+<h2 class="text-headline-md font-headline-md text-primary-container">Website / Dashboard Header Hero Template</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-md font-label-md text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">Interactive Component Specimen</span>
+</div>
+</div>
+<!-- Hero Banner Component directly modeled after image layout -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-sm overflow-hidden p-8 lg:p-14 relative">
+<!-- Floating atmospheric ambient wash -->
+<div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-[#E6F2F2]/60 to-transparent pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+<!-- Left Column Content -->
+<div class="lg:col-span-7">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E6F2F2] text-secondary font-label-md text-label-md mb-6 border border-secondary/20">
+<span class="material-symbols-outlined text-sm">clinical_notes</span>
+              Early Cognitive Detection Pathway
+            </div>
+<!-- Exact headline from image -->
+<h1 class="text-display-hero-mobile md:text-headline-lg font-headline-lg text-primary-container tracking-tight leading-tight mb-5">
+              Earlier insights.<br/>
+              Better care. <span class="text-secondary font-bold">Together.</span>
+</h1>
+<!-- Exact body from image -->
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed">
+              NeuroPath enables early cognitive screening, intelligent triage, and coordinated care—empowering patients, caregivers, and healthcare teams.
+            </p>
+<!-- Dual Action Button Pair from image -->
+<div class="flex flex-wrap items-center gap-4">
+<button class="bg-[#1BA7A8] hover:bg-[#158788] text-white px-7 py-3 rounded-full text-label-lg font-label-lg font-semibold transition-all duration-200 shadow-sm active:scale-95 flex items-center gap-2">
+<span>For Healthcare Providers</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="bg-transparent hover:bg-[#E6F2F2] text-[#1BA7A8] border-[1.5px] border-[#1BA7A8] px-7 py-3 rounded-full text-label-lg font-label-lg font-semibold transition-all duration-200 active:scale-95">
+                For Organizations
+              </button>
+</div>
+<div class="mt-8 flex items-center gap-6 text-label-md font-label-md text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-sm">check</span>
+                HIPAA Compliant
+              </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-sm">check</span>
+                Clinically Validated
+              </div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-sm">check</span>
+                EHR Integrated
+              </div>
+</div>
+</div>
+<!-- Right Column Illustration / Neural Pathway Graphic -->
+<div class="lg:col-span-5 relative flex items-center justify-center">
+<!-- Simulated Neural Head Pathway Canvas -->
+<div class="w-full max-w-md aspect-square bg-[#E6F2F2]/50 rounded-full p-8 flex items-center justify-center relative border border-secondary/10">
+<!-- Ambient layered rings -->
+<div class="absolute inset-4 rounded-full border border-secondary/20 border-dashed animate-spin" style="animation-duration: 40s;"></div>
+<div class="absolute inset-12 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm shadow-sm flex items-center justify-center overflow-hidden">
+<!-- Central Synapse Flow Graphic -->
+<svg class="w-4/5 h-4/5" viewbox="0 0 200 200">
+<!-- Head Profile Silhouette silhouette -->
+<path d="M70 180 C50 160 30 130 30 95 C30 50 65 20 110 20 C150 20 175 50 175 90 C175 110 165 125 155 135 C150 140 145 150 145 180 Z" fill="#FAF7F2" opacity="0.6"></path>
+<!-- Neural Tree Network -->
+<circle cx="110" cy="70" fill="#1BA7A8" r="8"></circle>
+<circle cx="80" cy="90" fill="#4C7DBA" r="7"></circle>
+<circle cx="140" cy="85" fill="#4C7DBA" r="7"></circle>
+<circle cx="115" cy="115" fill="#1BA7A8" r="6"></circle>
+<circle cx="85" cy="130" fill="#0B1D3A" r="5"></circle>
+<circle cx="135" cy="135" fill="#0B1D3A" r="5"></circle>
+<!-- Connecting Synapse Lines -->
+<line stroke="#1BA7A8" stroke-width="2.5" x1="110" x2="80" y1="70" y2="90"></line>
+<line stroke="#1BA7A8" stroke-width="2.5" x1="110" x2="140" y1="70" y2="85"></line>
+<line stroke="#4C7DBA" stroke-width="2" x1="80" x2="115" y1="90" y2="115"></line>
+<line stroke="#4C7DBA" stroke-width="2" x1="140" x2="115" y1="85" y2="115"></line>
+<line stroke="#0B1D3A" stroke-dasharray="3,3" stroke-width="2" x1="115" x2="85" y1="115" y2="130"></line>
+<line stroke="#0B1D3A" stroke-dasharray="3,3" stroke-width="2" x1="115" x2="135" y1="115" y2="135"></line>
+<!-- Curved Flow Pathway winding out -->
+<path d="M40 180 C80 160 90 140 115 115 C130 95 160 85 190 70" fill="none" stroke="#1BA7A8" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+</div>
+<!-- Floating Clinical Badge 1 -->
+<div class="absolute -top-2 left-4 bg-surface-container-lowest py-2 px-3.5 rounded-xl border border-outline-variant/30 shadow-md flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="text-label-md font-label-md text-primary-container font-semibold">94.8% Sensitivity</span>
+</div>
+<!-- Floating Clinical Badge 2 -->
+<div class="absolute -bottom-2 right-4 bg-surface-container-lowest py-2 px-3.5 rounded-xl border border-outline-variant/30 shadow-md flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">schedule</span>
+<span class="text-label-md font-label-md text-primary-container font-semibold">&lt; 8 min Screening</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= BRAND SLOGAN BANNER (From Bottom of Image) ================= -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-6">
+<div class="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant/30 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-[#E6F2F2] flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</div>
+<p class="text-body-md font-body-md text-primary-container font-medium">
+            NeuroPath is more than technology—it's a pathway to clarity, connection, and better brain health.
+          </p>
+</div>
+<div class="md:border-l md:border-outline-variant/30 md:pl-6 text-secondary font-headline-sm font-semibold text-headline-sm text-center md:text-right whitespace-nowrap">
+          For every mind. Every step. Every time.
+        </div>
+</div>
+</section>
+<!-- ================= FOOTER (Shared Component Anchor) ================= -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant/30 dark:border-outline/20 mt-16 transition-colors">
+<div class="w-full py-12 px-6 lg:px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<!-- Logo and Copyright text -->
+<div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+<a class="flex items-center gap-2" href="#">
+<div class="w-7 h-7 rounded-lg bg-surface-container-lowest flex items-center justify-center text-secondary shadow-xs">
+<span class="material-symbols-outlined text-lg">psychology</span>
+</div>
+<span class="text-headline-sm font-headline-sm font-bold text-primary dark:text-on-primary">NeuroPath</span>
+</a>
+<span class="hidden sm:inline text-outline-variant">•</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant">
+            © 2025 NeuroPath Health Inc. Early insight. Better care. Together.
+          </p>
+</div>
+<!-- Links from Shared Components JSON -->
+<nav class="flex flex-wrap items-center justify-center gap-5 text-label-md font-label-md">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150" href="#">Clinical Evidence</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150" href="#">Security &amp; HIPAA</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-150" href="#">Contact</a>
+</nav>
+</div>
+</footer>
+</div>
+</body></html>
