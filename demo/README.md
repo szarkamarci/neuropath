@@ -12,6 +12,10 @@ npm run build   # static build in dist/
 npm test        # unit tests (vitest)
 ```
 
+## Deploying on Vercel
+
+Static, frontend-only, no serverless functions. In the Vercel project settings set **Root Directory = `demo`**; `vercel.json` sets the Vite build (`npm run build` → `dist/`). The repository root is an older, unrelated Next.js app.
+
 `dist/index.html` also opens directly from the folder (double-click, `file://`). The build emits one classic script for exactly this reason, so it needs no server and no network.
 
 ## Structure
@@ -23,7 +27,11 @@ npm test        # unit tests (vitest)
 | `src/components/ui/` | Buttons, cards, badges, form controls, table, modal, notices |
 | `src/components/charts/` | Recharts theme, sparkline, trend chart |
 | `src/components/layout/` | Top bar, role switcher, disclaimer bar, toast |
+| `src/data/seed.ts` | Deterministic synthetic panel (25 patients, hero Erzsébet K.) |
+| `src/logic/risk.ts` | Transparent rule-based risk model (illustrative, not validated) + tests |
+| `src/logic/mbi.ts` | Behavioral check items and scoring |
+| `src/features/gp/` | GP panel, patient detail, behavioral check, recommendation, decision, referral |
 | `src/store/demoStore.ts` | Shared in-memory state (Zustand) with deterministic reset |
 | `src/pages/` | Start screen, role views, `#/design` component sample page |
 
-Routes (hash-based): `#/`, `#/gp`, `#/specialist`, `#/patient`, `#/research`, `#/design`.
+Routes (hash-based): `#/`, `#/gp`, `#/gp/patient/:id`, `#/specialist`, `#/patient`, `#/research`, `#/design`.

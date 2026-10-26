@@ -10,10 +10,13 @@ interface ModalProps {
   description?: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
+  size?: 'md' | 'lg';
+  /** Hook for the guided demo overlay. */
+  demoId?: string;
 }
 
 /** Level-3 dialog with 16px radius (DESIGN.md "Elevation" / "Shapes"). */
-export function Modal({ open, onClose, title, description, children, footer }: ModalProps) {
+export function Modal({ open, onClose, title, description, children, footer, size = 'md', demoId }: ModalProps) {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -31,7 +34,8 @@ export function Modal({ open, onClose, title, description, children, footer }: M
       <div
         role="dialog"
         aria-modal="true"
-        className="relative flex max-h-[calc(100vh-3rem)] w-full max-w-xl animate-pop-in flex-col rounded-2xl border border-outline-variant/30 bg-white shadow-xl"
+        data-demo={demoId}
+        className={`relative flex max-h-[calc(100vh-3rem)] w-full ${size === 'lg' ? 'max-w-3xl' : 'max-w-xl'} animate-pop-in flex-col rounded-2xl border border-outline-variant/30 bg-white shadow-xl`}
       >
         <div className="flex items-start justify-between gap-4 border-b border-outline-variant/20 px-6 pt-6 pb-4">
           <div>

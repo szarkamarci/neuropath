@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { cn } from '../../lib/cn';
+import type { PatientStatus } from '../../data/types';
+import type { RiskBand } from '../../logic/risk';
 import { t } from '../../strings';
 
 export type BadgeTone = 'neutral' | 'teal' | 'blue' | 'attention' | 'navy' | 'outline';
@@ -46,8 +48,6 @@ export function Badge({ tone = 'neutral', dot, icon, children, className }: Badg
   );
 }
 
-export type RiskBand = 'low' | 'moderate' | 'high';
-
 // Design-system semantics: affirmative = teal, neutral review = blue, attention = coral.
 const riskTone: Record<RiskBand, BadgeTone> = { low: 'teal', moderate: 'blue', high: 'attention' };
 
@@ -59,12 +59,13 @@ export function RiskBadge({ band, className }: { band: RiskBand; className?: str
   );
 }
 
-export type PatientStatus = 'newFlag' | 'referred' | 'followUp' | 'assessed';
-
 const statusTone: Record<PatientStatus, BadgeTone> = {
+  routine: 'outline',
   newFlag: 'attention',
   referred: 'blue',
   followUp: 'neutral',
+  monitor: 'neutral',
+  dismissed: 'outline',
   assessed: 'teal',
 };
 
