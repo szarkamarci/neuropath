@@ -14,6 +14,7 @@ import { PatientHeader } from './PatientHeader';
 import { RecommendationCard } from './RecommendationCard';
 import { ReferralModal } from './ReferralModal';
 import { RiskCard } from './RiskCard';
+import { SpecialistOutcomeCard } from './SpecialistOutcomeCard';
 
 export function PatientDetailPage() {
   const { patientId = '' } = useParams();
@@ -42,6 +43,7 @@ function PatientDetail({ patient }: { patient: Patient }) {
       <PatientHeader patient={patient} />
       <div className="mt-gutter grid grid-cols-12 items-start gap-gutter">
         <div className="col-span-7 flex flex-col gap-gutter">
+          <SpecialistOutcomeCard patientId={patient.id} />
           <LabTrendsCard patient={patient} />
           <RecordNotesCard patient={patient} />
           <MbiCheckCard patientId={patient.id} />

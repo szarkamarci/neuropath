@@ -172,3 +172,26 @@ export function SegmentedControl<V extends string>({
     </div>
   );
 }
+
+interface SliderProps {
+  value: number;
+  onChange: (value: number) => void;
+  label: string;
+  min?: number;
+  max?: number;
+}
+
+/** Labelled range input; the label is exposed to assistive tech and tests. */
+export function Slider({ value, onChange, label, min = 0, max = 100 }: SliderProps) {
+  return (
+    <input
+      type="range"
+      aria-label={label}
+      min={min}
+      max={max}
+      value={value}
+      onChange={(e) => onChange(Number(e.target.value))}
+      className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-surface-container-high accent-teal"
+    />
+  );
+}

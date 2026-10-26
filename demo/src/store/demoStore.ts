@@ -1,8 +1,11 @@
 import { create } from 'zustand';
 import { patients } from '../data/seed';
 import type { PatientStatus } from '../data/types';
+import { appointmentFor, type Appointment } from '../logic/appointment';
+import type { Assessment } from '../logic/assessment';
 import type { MbiAnswer, MbiAnswers, MbiItemId } from '../logic/mbi';
 import type { RiskResult } from '../logic/risk';
+import { assessPatient } from '../logic/riskInput';
 
 /**
  * Shared in-memory demo state. Every role reads from this one store, so an
@@ -27,6 +30,8 @@ export interface Referral {
   /** Risk as shown to the GP at the moment of referral. */
   risk: RiskResult;
   mbiAnswers: MbiAnswers;
+  /** Simulated booking made when the referral is sent. */
+  appointment: Appointment;
 }
 
 export interface DemoData {
@@ -36,6 +41,25 @@ export interface DemoData {
   mbiCompletedById: Record<string, number>;
   decisionById: Record<string, ClinicianDecision>;
   referrals: Referral[];
+  /** Specialist assessments, keyed by patient id. */
+  assessmentById: Record<string, Assessment>;
+  /** Patient has chosen to share updates with a caregiver. */
+  caregiverShare: boolean;
+}
+
+/** Background patients already referred before the demo starts (fills the specialist inbox). */
+function seedReferrals(): Referral[] {
+  return patients
+    .filter((p) => p.initialStatus === 'referred' && !p.isHero)
+    .map((p) => ({
+      id: `ref-${p.id}`,
+      patientId: p.id,
+      sentOn: p.lastVisit,
+      gpNote: 'Memory concerns raised at the chronic-care review. Please assess.',
+      risk: assessPatient(p),
+      mbiAnswers: {},
+      appointment: appointmentFor(p.lastVisit),
+    }));
 }
 
 export function createInitialData(): DemoData {
@@ -44,7 +68,9 @@ export function createInitialData(): DemoData {
     mbiAnswersById: {},
     mbiCompletedById: {},
     decisionById: {},
-    referrals: [],
+    referrals: seedReferrals(),
+    assessmentById: {},
+    caregiverShare: false,
   };
 }
 
@@ -52,7 +78,10 @@ interface DemoActions {
   setMbiAnswer: (patientId: string, item: MbiItemId, answer: MbiAnswer) => void;
   completeMbi: (patientId: string, seconds: number) => void;
   reopenMbi: (patientId: string) => void;
-  sendReferral: (referral: Omit<Referral, 'id'>) => void;
+  sendReferral: (referral: Omit<Referral, 'id' | 'appointment'>) => void;
+  saveAssessment: (assessment: Assessment) => void;
+  reopenAssessment: (patientId: string) => void;
+  setCaregiverShare: (share: boolean) => void;
   recordDecision: (patientId: string, decision: Exclude<ClinicianDecision, { kind: 'refer' }>) => void;
   clearDecision: (patientId: string) => void;
 }
@@ -91,26 +120,49 @@ export const useDemoStore = create<DemoStore>()((set) => ({
 
   sendReferral: (referral) =>
     set((s) => ({
-      referrals: [...s.referrals.filter((r) => r.patientId !== referral.patientId), { ...referral, id: `ref-${referral.patientId}` }],
+      referrals: [
+        ...s.referrals.filter((r) => r.patientId !== referral.patientId),
+        { ...referral, id: `ref-${referral.patientId}`, appointment: appointmentFor(referral.sentOn) },
+      ],
       decisionById: { ...s.decisionById, [referral.patientId]: { kind: 'refer' } },
       statusById: { ...s.statusById, [referral.patientId]: statusForDecision.refer },
     })),
 
-  recordDecision: (patientId, decision) =>
+  saveAssessment: (assessment) =>
     set((s) => ({
-      decisionById: { ...s.decisionById, [patientId]: decision },
-      statusById: { ...s.statusById, [patientId]: statusForDecision[decision.kind] },
-      referrals: s.referrals.filter((r) => r.patientId !== patientId),
+      assessmentById: { ...s.assessmentById, [assessment.patientId]: assessment },
+      statusById: { ...s.statusById, [assessment.patientId]: 'assessed' },
     })),
+
+  reopenAssessment: (patientId) =>
+    set((s) => {
+      const { [patientId]: _removed, ...assessmentById } = s.assessmentById;
+      return { assessmentById, statusById: { ...s.statusById, [patientId]: 'referred' } };
+    }),
+
+  setCaregiverShare: (share) => set({ caregiverShare: share }),
+
+  recordDecision: (patientId, decision) =>
+    set((s) => {
+      const { [patientId]: _removed, ...assessmentById } = s.assessmentById;
+      return {
+        decisionById: { ...s.decisionById, [patientId]: decision },
+        statusById: { ...s.statusById, [patientId]: statusForDecision[decision.kind] },
+        referrals: s.referrals.filter((r) => r.patientId !== patientId),
+        assessmentById,
+      };
+    }),
 
   clearDecision: (patientId) =>
     set((s) => {
       const { [patientId]: _removed, ...decisionById } = s.decisionById;
+      const { [patientId]: _assessment, ...assessmentById } = s.assessmentById;
       const initial = patients.find((p) => p.id === patientId)?.initialStatus ?? 'routine';
       return {
         decisionById,
         statusById: { ...s.statusById, [patientId]: initial },
         referrals: s.referrals.filter((r) => r.patientId !== patientId),
+        assessmentById,
       };
     }),
 

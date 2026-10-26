@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { DisclaimerBar } from './DisclaimerBar';
 import { Toast } from './Toast';
@@ -5,6 +6,12 @@ import { TopBar } from './TopBar';
 
 export function AppShell() {
   const { pathname } = useLocation();
+
+  // Hash navigation keeps the previous scroll offset; every view should open at the top.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div className="min-h-screen bg-background">
       <TopBar />

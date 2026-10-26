@@ -6,6 +6,15 @@ export function formatDate(iso: string): string {
   return `${d} ${MONTHS[(m ?? 1) - 1]} ${y}`;
 }
 
+const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+/** '2026-11-12' → 'Thursday, 12 Nov 2026'. */
+export function formatDateLong(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  const weekday = WEEKDAYS[new Date(Date.UTC(y!, (m ?? 1) - 1, d!)).getUTCDay()];
+  return `${weekday}, ${formatDate(iso)}`;
+}
+
 /** '2026-10-26' → 'Oct ’26' for chart axes. */
 export function formatMonthYear(iso: string): string {
   const [y, m] = iso.split('-').map(Number);

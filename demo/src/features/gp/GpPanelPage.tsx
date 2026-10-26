@@ -40,7 +40,7 @@ export function GpPanelPage() {
         <MetricCard icon={<Users />} value={rows.length} label={p.metrics.panel} sublabel={p.metrics.panelSub} />
         <MetricCard icon={<TriangleAlert />} value={countBand('high')} label={p.metrics.high} sublabel={p.metrics.highSub} tone="attention" />
         <MetricCard icon={<ClipboardList />} value={countStatus('newFlag')} label={p.metrics.flags} sublabel={p.metrics.flagsSub} tone="blue" />
-        <MetricCard icon={<FolderOpen />} value={countStatus('referred')} label={p.metrics.referred} sublabel={p.metrics.referredSub} />
+        <MetricCard icon={<FolderOpen />} value={countStatus('referred') + countStatus('assessed')} label={p.metrics.referred} sublabel={p.metrics.referredSub} />
       </div>
 
       <Card padded={false} className="overflow-hidden">

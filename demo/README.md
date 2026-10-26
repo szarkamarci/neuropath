@@ -31,7 +31,9 @@ Static, frontend-only, no serverless functions. In the Vercel project settings s
 | `src/logic/risk.ts` | Transparent rule-based risk model (illustrative, not validated) + tests |
 | `src/logic/mbi.ts` | Behavioral check items and scoring |
 | `src/features/gp/` | GP panel, patient detail, behavioral check, recommendation, decision, referral |
+| `src/features/patient/` | Phone-frame patient view: notification, message, what happens next |
+| `src/features/specialist/` | Referral inbox, structured referral view, cognitive assessment and diagnosis form |
 | `src/store/demoStore.ts` | Shared in-memory state (Zustand) with deterministic reset |
 | `src/pages/` | Start screen, role views, `#/design` component sample page |
 
-Routes (hash-based): `#/`, `#/gp`, `#/gp/patient/:id`, `#/specialist`, `#/patient`, `#/research`, `#/design`.
+Routes (hash-based): `#/`, `#/gp`, `#/gp/patient/:id`, `#/specialist`, `#/specialist/referral/:id`, `#/patient` (`?screen=lock|message|next`), `#/research`, `#/design`.

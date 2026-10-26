@@ -48,11 +48,7 @@ export function RiskCard({ risk, checkStarted }: RiskCardProps) {
         {current.contributors.length === 0 ? (
           <p className="text-body-sm text-muted">{r.noContributors}</p>
         ) : (
-          <ul className="flex flex-col gap-2.5">
-            {current.contributors.map((c) => (
-              <ContributorRow key={c.id} contributor={c} />
-            ))}
-          </ul>
+          <ContributorList contributors={current.contributors} />
         )}
       </div>
 
@@ -97,6 +93,16 @@ function RiskScale({ score, baselineScore }: { score: number; baselineScore: num
         ))}
       </div>
     </div>
+  );
+}
+
+export function ContributorList({ contributors }: { contributors: Contributor[] }) {
+  return (
+    <ul className="flex flex-col gap-2.5">
+      {contributors.map((c) => (
+        <ContributorRow key={c.id} contributor={c} />
+      ))}
+    </ul>
   );
 }
 
